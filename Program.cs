@@ -16,17 +16,33 @@ namespace puppet_server
     {
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args)
-                .UseKestrel(options =>
-                {
-                    options.Listen(IPAddress.Any, 5000);
+            var isUnix = RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
 
-                    var isUnix = RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
+            if (isUnix)
+            {
+                var webHostBuilder = CreateWebHostBuilder(args)
+                    .UseLibuv()
+                    .UseKestrel(options =>
+                    {
+                        options.ListenUnixSocket("/tmp/nginx.socket");
+                    })
+                    .Build();
 
-                    if (isUnix)
-                        options.ListenUnixSocket(Path.Combine(Environment.GetEnvironmentVariable("TMP"), "nginx.socket"));
-                })
-                .Build().Run();
+                var initializedFile = Path.Combine("/tmp/app-initialized");
+                if (!File.Exists(initializedFile))
+                    File.Create(initializedFile).Close();
+
+                webHostBuilder.Run();
+            }
+            else
+            {
+                CreateWebHostBuilder(args)
+                    .UseKestrel(options =>
+                    {
+                        options.Listen(IPAddress.Any, 5000);
+                    })
+                    .Build().Run();
+            }
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>

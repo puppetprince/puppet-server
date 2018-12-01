@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# TODO: Only runs correctly from project root and only on Heroku
+
+cd heroku_output && ./puppet-server
