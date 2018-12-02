@@ -4,7 +4,7 @@ module.exports = {
     entry: './assets/js/application.js',
     output: {
         path: path.resolve(__dirname, 'wwwroot/assets'),
-        filename: 'bundle.js'
+        filename: 'application.js'
     },
     resolve: {
         modules: [path.resolve(__dirname, 'assets'), 'node_modules']
@@ -22,14 +22,14 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
-                    { loader: "style-loader/url" },
+                    { loader: "style-loader" },
                     { loader: "css-loader" }
                 ]
             },
             {
                 test: /\.scss$|\.sass$/,
                 use: [
-                    { loader: "style-loader/url" },
+                    { loader: "style-loader" },
                     { loader: "css-loader" },
                     {
                         loader: 'postcss-loader', // Run post css actions

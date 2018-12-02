@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace puppet_server
+namespace PuppetServer
 {
     public class Startup
     {
@@ -44,7 +44,7 @@ namespace puppet_server
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Pages/Error");
                 app.UseHsts();
                 app.UseHttpsRedirection();
             }
@@ -56,7 +56,7 @@ namespace puppet_server
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Pages}/{action=Index}/{id?}");
             });
         }
     }

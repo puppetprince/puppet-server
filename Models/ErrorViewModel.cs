@@ -1,6 +1,6 @@
 using System;
 
-namespace puppet_server.Models
+namespace PuppetServer.Models
 {
     public class ErrorViewModel
     {
