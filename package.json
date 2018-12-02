@@ -1,0 +1,35 @@
+{
+  "name": "puppet-server",
+  "version": "1.0.0",
+  "description": "puppet-server asset dependencies",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/puppetprince/puppet-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/puppetprince/puppet-server/issues"
+  },
+  "homepage": "https://github.com/puppetprince/puppet-server#readme",
+  "devDependencies": {
+    "css-loader": "^1.0.1",
+    "elm": "^0.19.0-bugfix2",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.26.1"
+  },
+  "dependencies": {
+    "bootstrap": "^4.1.3",
+    "elm-webpack-loader": "^5.0.0",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.3",
+    "postcss-loader": "^3.0.0"
+  }
+}
